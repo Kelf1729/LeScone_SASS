@@ -1,0 +1,375 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+ul {
+  list-style: none;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+.grid-1 {
+  width: calc(8.3333333333% - 20px);
+}
+
+.grid-2 {
+  width: calc(16.6666666667% - 20px);
+}
+
+.grid-3 {
+  width: calc(25% - 20px);
+}
+
+.grid-4 {
+  width: calc(33.3333333333% - 20px);
+}
+
+.grid-5 {
+  width: calc(41.6666666667% - 20px);
+}
+
+.grid-6 {
+  width: calc(50% - 20px);
+}
+
+.grid-7 {
+  width: calc(58.3333333333% - 20px);
+}
+
+.grid-8 {
+  width: calc(66.6666666667% - 20px);
+}
+
+.grid-9 {
+  width: calc(75% - 20px);
+}
+
+.grid-10 {
+  width: calc(83.3333333333% - 20px);
+}
+
+.grid-11 {
+  width: calc(91.6666666667% - 20px);
+}
+
+.grid-12 {
+  width: calc(100% - 20px);
+}
+
+[class^=grid-] {
+  float: left;
+  min-height: 1px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+@media screen and (max-width: 759px) {
+  [class^=grid-] {
+    width: 100%;
+    float: none;
+    margin: 0px;
+  }
+}
+
+.offset-1 {
+  margin-left: calc(8.3333333333% + 20px/2);
+}
+
+.offset-2 {
+  margin-left: calc(16.6666666667% + 20px/2);
+}
+
+.offset-3 {
+  margin-left: calc(25% + 20px/2);
+}
+
+.offset-4 {
+  margin-left: calc(33.3333333333% + 20px/2);
+}
+
+.offset-5 {
+  margin-left: calc(41.6666666667% + 20px/2);
+}
+
+.offset-6 {
+  margin-left: calc(50% + 20px/2);
+}
+
+.offset-7 {
+  margin-left: calc(58.3333333333% + 20px/2);
+}
+
+.offset-8 {
+  margin-left: calc(66.6666666667% + 20px/2);
+}
+
+.offset-9 {
+  margin-left: calc(75% + 20px/2);
+}
+
+.offset-10 {
+  margin-left: calc(83.3333333333% + 20px/2);
+}
+
+.offset-11 {
+  margin-left: calc(91.6666666667% + 20px/2);
+}
+
+.offset-12 {
+  margin-left: calc(100% + 20px/2);
+}
+
+@media screen and (max-width: 759px) {
+  .offset-1, .offset-2, .offset-3, .offset-4, .offset-5, .offset-6, .offset-7, .offset-8, .offset-9, .offset-10, .offset-11, .offset-12 {
+    margin-left: 0px;
+  }
+}
+.container {
+  max-width: 1200px;
+  margin: 0px auto;
+  position: relative;
+}
+@media screen and (min-width: 760px) and (max-width: 1199px) {
+  .container {
+    max-width: 760px;
+  }
+}
+@media screen and (max-width: 759px) {
+  .container {
+    max-width: 480px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+.container::after, .container::before {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.row {
+  position: relative;
+  margin-left: -10px;
+  margin-right: -10px;
+}
+.row::after, .row::before {
+  content: "";
+  display: table;
+  clear: both;
+}
+@media screen and (max-width: 759px) {
+  .row {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}
+
+body {
+  background-color: #edece4;
+  border: 10px solid #cbc6b9;
+  color: #2a2426;
+}
+@media screen and (max-width: 759px) {
+  body {
+    border: none;
+  }
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.titulo {
+  font-family: "PT Monospace", monospace;
+  font-size: 1.125em;
+  line-height: 1.6666666667em;
+  text-transform: uppercase;
+}
+@media screen and (max-width: 759px) {
+  .titulo {
+    margin-bottom: 10px;
+  }
+}
+.titulo::after {
+  content: "";
+  display: block;
+  width: 75%;
+  height: 2px;
+  float: right;
+  margin-top: 15px;
+  background-color: #2a2426;
+}
+@media screen and (min-width: 760px) and (max-width: 1199px) {
+  .titulo::after {
+    width: 60%;
+  }
+}
+
+p {
+  font-family: "PT Monospace", monospace;
+  font-size: 1.125em;
+  line-height: 1.6666666667em;
+}
+
+a {
+  text-decoration: none;
+  font-family: "PT Monospace", monospace;
+  font-size: 1.125em;
+  line-height: 1.6666666667em;
+  color: #2a2426;
+  display: block;
+}
+
+.intro {
+  margin-top: 40px;
+}
+@media screen and (max-width: 759px) {
+  .intro {
+    margin-top: 20px;
+  }
+}
+
+.telefone {
+  color: #988c77;
+}
+@media screen and (max-width: 759px) {
+  .telefone {
+    margin-bottom: 30px;
+  }
+}
+.telefone::after {
+  margin-top: 150px;
+  margin-left: 80px;
+  letter-spacing: -40px;
+  content: "////";
+  display: block;
+  color: #2a2426;
+  font-size: 12rem;
+}
+@media screen and (min-width: 760px) and (max-width: 1199px) {
+  .telefone::after {
+    margin-top: 80px;
+    margin-left: 0px;
+  }
+}
+@media screen and (max-width: 759px) {
+  .telefone::after {
+    display: none;
+  }
+}
+
+.foto-intro {
+  border: 10px solid #cbc6b9;
+}
+
+.logo {
+  margin-bottom: 60px;
+}
+
+.intro-info {
+  border-right: 2px solid #2a2426;
+}
+.intro-info p {
+  padding-top: 10px;
+}
+.intro-info p:first-child {
+  border-bottom: 2px solid #2a2426;
+}
+@media screen and (max-width: 759px) {
+  .intro-info {
+    border-right: none;
+  }
+}
+
+.menu {
+  margin-top: 120px;
+  margin-bottom: 120px;
+}
+@media screen and (min-width: 760px) and (max-width: 1199px) {
+  .menu {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+}
+@media screen and (max-width: 759px) {
+  .menu {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+}
+
+.menu-item {
+  font-family: "Aref Ruqaa", serif;
+  font-size: 1.125em;
+  line-height: 1.6666666667em;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+.menu-item h2 {
+  margin-bottom: 20px;
+}
+.menu-item img {
+  border-radius: 50%;
+  border: 10px solid #cbc6b9;
+  float: right;
+}
+.menu-item span {
+  color: #988c77;
+  margin-right: 20px;
+}
+
+.contato {
+  margin-top: 120px;
+  margin-bottom: 120px;
+}
+@media screen and (min-width: 760px) and (max-width: 1199px) {
+  .contato {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+}
+@media screen and (max-width: 759px) {
+  .contato {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+}
+.contato form label {
+  display: block;
+  font-family: "PT Monospace", monospace;
+  font-size: 1.125em;
+  line-height: 1.6666666667em;
+}
+.contato form input[type=text],
+.contato form textarea {
+  font-family: "PT Monospace", monospace;
+  font-size: 1.125em;
+  line-height: 1.6666666667em;
+  width: 100%;
+  padding: 0px 5px;
+  border: 3px solid #988c77;
+  background: transparent;
+  margin-bottom: 10px;
+}
+
+.contato-info p:last-child {
+  margin-bottom: 20px;
+}
+
+.contato-mapa {
+  border: 10px solid #cbc6b9;
+}
+
+footer {
+  background-color: #2a2426;
+  padding: 20px 0px;
+  color: #988c77;
+  text-align: center;
+}
+
+/*# sourceMappingURL=style.css.map */

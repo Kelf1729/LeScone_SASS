@@ -1,0 +1,309 @@
+// Reset
+* {
+  margin: 0px;
+  padding: 0px;
+}
+ul {
+  list-style: none;
+}
+// variable
+$cols: 12;
+$gutter: 20px;
+$l-device: 1200px;
+$m-device: 760px;
+$s-device: 480px;
+// Colors
+$bege-claro: #edece4;
+$bege-medio: #cbc6b9;
+$bege-escuro: #988c77;
+$preto: #2a2426;
+// Fonts
+$font-1: "PT Monospace", monospace;
+$font-2: "Aref Ruqaa", serif;
+// Box
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+// Mixin Tipografia
+@function em($pixel, $contexo: 16) {
+  @return $pixel / $contexo + em;
+}
+@mixin tipo-1($size) {
+  font-family: $font-1;
+  @if $size == 18 {
+    font-size: em(18);
+    line-height: em(30, 18);
+  }
+}
+@mixin tipo-2($size) {
+  font-family: $font-2;
+  @if $size == 18 {
+    font-size: em(18);
+    line-height: em(30, 18);
+  } @else if $size == 24 {
+    font-size: em(24);
+    line-height: em(30, 24);
+  }
+}
+// Mixin for devices
+@mixin d($size) {
+  @if $size == l {
+    @media screen and (min-width: $l-device) {
+      @content;
+    }
+  } @else if $size == m {
+    @media screen and (min-width: $m-device) and (max-width: ($l-device - 1)) {
+      @content;
+    }
+  } @else if $size == s {
+    @media screen and (max-width: ($m-device - 1)) {
+      @content;
+    }
+  }
+}
+// Funçao de grid
+@function grid($col, $offset: false) {
+  $width: $col/$cols * 100 + "%";
+  $result: calc(#{$width} - #{$gutter});
+  @if $offset == offset {
+    $gutter: #{$gutter} / 2;
+    $result: calc(#{$width} + #{$gutter});
+  }
+  @return $result;
+}
+// Gerar grids
+@for $i from 1 through $cols {
+  .grid-#{$i} {
+    width: grid($i);
+  }
+}
+// Mixin estrutura do grid
+@mixin grid-structure {
+  float: left;
+  min-height: 1px;
+  margin-left: $gutter/2;
+  margin-right: $gutter/2;
+  @include d(s) {
+    width: 100%;
+    float: none;
+    margin: 0px;
+  }
+}
+// Toda classe que começar com o grid será selecionada
+[class^="grid-"] {
+  @include grid-structure();
+}
+// Gerar offsets
+@for $i from 1 through $cols {
+  .offset-#{$i} {
+    margin-left: grid($i, offset);
+    @extend %offset;
+  }
+}
+@include d(s) {
+  %offset {
+    margin-left: 0px;
+  }
+}
+// Mixin clearfix
+@mixin clearfix {
+  &::after,
+  &::before {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+@mixin container {
+  max-width: $l-device;
+  margin: 0px auto;
+  position: relative;
+  @include d(m) {
+    max-width: $m-device;
+  }
+  @include d(s) {
+    max-width: $s-device;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  @include clearfix();
+}
+.container {
+  @include container();
+}
+@mixin row {
+  position: relative;
+  margin-left: -$gutter/2;
+  margin-right: -$gutter/2;
+  @include clearfix();
+  @include d(s) {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}
+.row {
+  @include row;
+}
+body {
+  background-color: $bege-claro;
+  border: 10px solid $bege-medio;
+  color: $preto;
+  @include d(s) {
+    border: none;
+  }
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+.titulo {
+  @include tipo-1(18);
+  text-transform: uppercase;
+  @include d(s) {
+    margin-bottom: 10px;
+  }
+  &::after {
+    content: "";
+    display: block;
+    width: 75%;
+    height: 2px;
+    float: right;
+    margin-top: 15px;
+    background-color: $preto;
+  }
+  @include d(m) {
+    &::after {
+      width: 60%;
+    }
+  }
+}
+p {
+  @include tipo-1(18);
+}
+a {
+  text-decoration: none;
+  @include tipo-1(18);
+  color: $preto;
+  display: block;
+}
+// Intro
+.intro {
+  margin-top: 40px;
+  @include d(s) {
+    margin-top: 20px;
+  }
+}
+.telefone {
+  color: $bege-escuro;
+  @include d(s) {
+    margin-bottom: 30px;
+  }
+  &::after {
+    margin-top: 150px;
+    margin-left: 80px;
+    letter-spacing: -40px;
+    content: "////";
+    display: block;
+    color: $preto;
+    font-size: 12rem;
+    @include d(m) {
+      margin-top: 80px;
+      margin-left: 0px;
+    }
+    @include d(s) {
+      display: none;
+    }
+  }
+}
+.foto-intro {
+  border: 10px solid $bege-medio;
+}
+.logo {
+  margin-bottom: 60px;
+}
+.intro-info {
+  border-right: 2px solid $preto;
+  p {
+    padding-top: 10px;
+  }
+  p:first-child {
+    border-bottom: 2px solid $preto;
+  }
+  @include d(s) {
+    border-right: none;
+  }
+}
+// Menu
+.menu {
+  margin-top: 120px;
+  margin-bottom: 120px;
+  @include d(m) {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+  @include d(s) {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+}
+.menu-item {
+  @include tipo-2(18);
+  font-weight: 700;
+  margin-bottom: 40px;
+  h2 {
+    margin-bottom: 20px;
+  }
+  img {
+    border-radius: 50%;
+    border: 10px solid $bege-medio;
+    float: right;
+  }
+  span {
+    color: $bege-escuro;
+    margin-right: 20px;
+  }
+}
+// Contato
+.contato {
+  margin-top: 120px;
+  margin-bottom: 120px;
+  @include d(m) {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+  @include d(s) {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+  form {
+    label {
+      display: block;
+      @include tipo-1(18);
+    }
+    input[type="text"],
+    textarea {
+      @include tipo-1(18);
+      width: 100%;
+      padding: 0px 5px;
+      border: 3px solid $bege-escuro;
+      background: transparent;
+      margin-bottom: 10px;
+    }
+  }
+}
+.contato-info {
+  p:last-child {
+    margin-bottom: 20px;
+  }
+}
+.contato-mapa {
+  border: 10px solid $bege-medio;
+}
+footer {
+  background-color: $preto;
+  padding: 20px 0px;
+  color: $bege-escuro;
+  text-align: center;
+}
